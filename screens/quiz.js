@@ -7,14 +7,20 @@ const Quiz = ({navigation}) => {
   const [questions, setQuestions] = useState();
   const [ques, setQues] = useState(0);
   const getQuiz = async() => {
-    const url='https://opentdb.com/api.php?amount=10&type=multiple';
+    const url='https://opentdb.com/api.php?amount=10&category=9&type=multiple&encode=url3986';
     const res= await fetch(url);
     const data= await res.json();
+    console.log(data.results[0]);
     setQuestions(data.results);
   }
   useEffect(() => {
     getQuiz();
   }, []);
+
+  const handleNextPress=() => {
+    setQues(ques+1);
+  }
+
   return (
     
     <View style={styles.container}>
@@ -22,7 +28,7 @@ const Quiz = ({navigation}) => {
       {questions&&
       <View style={styles.parent}>
         <View style={styles.title}>
-          <Text style={styles.question}>Q. Imagin this is a really cool question</Text>
+          <Text style={styles.question}>Q. {decodeURIComponent(questions[ques].question)} </Text>
         </View>
         <View style={styles.options}>
           <TouchableOpacity style={styles.optionButton}>
@@ -42,12 +48,18 @@ const Quiz = ({navigation}) => {
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>SKIP</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+
+      {ques!==9 && 
+          <TouchableOpacity style={styles.button} onPress={handleNextPress}>
             <Text style={styles.buttonText}>NEXT</Text>
           </TouchableOpacity>
-          {/* <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>END</Text>
-          </TouchableOpacity> */}
+      }
+      
+      {ques==9 && 
+          <TouchableOpacity style={styles.button} onPress={() => null}>
+            <Text style={styles.buttonText}>SHOW RESULT</Text>
+          </TouchableOpacity>
+      } 
         </View>
       </View>
       }
@@ -90,7 +102,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },  
   question: {
-    fontSize: 28,
+    fontSize: 22,
     color: 'black',
   },
   option: {
