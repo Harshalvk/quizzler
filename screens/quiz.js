@@ -7,7 +7,7 @@ const Quiz = ({navigation}) => {
   const [questions, setQuestions] = useState();
   const [ques, setQues] = useState(0);
   const getQuiz = async() => {
-    const url='https://opentdb.com/api.php?amount=10&category=9&type=multiple&encode=url3986';
+    const url='https://opentdb.com/api.php?amount=10&category=30&type=multiple&encode=url3986';
     const res= await fetch(url);
     const data= await res.json();
     console.log(data.results[0]);

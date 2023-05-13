@@ -1,4 +1,4 @@
-package com.jobs_portal;
+package com.quizzler;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -14,7 +14,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "jobs_portal";
+    return "quizzler";
   }
 
   /**

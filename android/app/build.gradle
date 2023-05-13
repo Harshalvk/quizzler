@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.jobs_portal"
+    namespace "com.quizzler"
     defaultConfig {
-        applicationId "com.jobs_portal"
+        applicationId "com.quizzler"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -1,4 +1,4 @@
-package com.jobs_portal;
+package com.quizzler;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
